@@ -1,0 +1,83 @@
+[
+  {
+    "id": "skyrunners",
+    "title": "SkyRunners",
+    "category": "Aerial",
+    "status": "Active",
+    "description": "Developing fixed-wing autonomous aircraft capable of high-endurance payload delivery across campus and beyond.",
+    "image": "https://framerusercontent.com/images/gby1MYINwg9XSH94aNUok8jrZIc.png",
+    "featured": true
+  },
+  {
+    "id": "robosub",
+    "title": "RoboSub",
+    "category": "Underwater",
+    "status": "Active",
+    "description": "Autonomous submersible for RoboSub competition and marine conservation research in partnership with MBARI.",
+    "image": "https://framerusercontent.com/images/9TDsdGhkCz0dQd9UZhNRLQRTx90.webp",
+    "featured": true
+  },
+  {
+    "id": "conservation-technology-group",
+    "title": "Conservation Technology Group",
+    "category": "Conservation",
+    "status": "Active",
+    "description": "Computer vision and drone autonomy to monitor ocean wildlife at scale.",
+    "image": "https://framerusercontent.com/images/UC9KQg9N7nH2ylYPuny28FdFE.png",
+    "featured": true
+  },
+  {
+    "id": "horizons-initiative",
+    "title": "The Horizons Initiative",
+    "category": "Aerial",
+    "status": "Active",
+    "description": "Starting in 2026, Horizons will run a campus-wide robotics hackathon annually. In 2026, our theme is UAVs!",
+    "image": "https://framerusercontent.com/images/Cgt9mYLopXBrgIk6JoVAODfrgRw.png",
+    "featured": false
+  },
+  {
+    "id": "combat-robotics",
+    "title": "Combat Robotics",
+    "category": "Competition",
+    "status": "Active",
+    "description": "Building 30 lb battle bots for competition. Structural engineering, drivetrain design, and electronics hardening.",
+    "image": "https://framerusercontent.com/images/l8DQj1ZoRMSD0VD8p8g8t7LyXaw.jpg",
+    "featured": false
+  },
+  {
+    "id": "builderbot",
+    "title": "BuilderBot",
+    "category": "Ground",
+    "status": "Active",
+    "description": "Building a computer vision guided robotic arm for breadboard circuit assembly.",
+    "image": "https://framerusercontent.com/images/1ASDLMC5JeaTP7s3nxuyNTb9P8.png",
+    "featured": false
+  },
+  {
+    "id": "stanford-escape",
+    "title": "Stanford Escape",
+    "category": "Fun",
+    "status": "Active",
+    "description": "Engineering Stanford's first escape room from scratch — a team of engineers, puzzlers, and tinkerers from Stanford Puzzle Hunt, ACM, and SSR.",
+    "image": "https://framerusercontent.com/images/JS1nf3fhaRlPtNvKSR3FudC1eXE.png",
+    "featured": false
+  },
+  {
+    "id": "humanoid-team",
+    "title": "Humanoid Team",
+    "category": "Ground",
+    "status": "Active",
+    "description": "Working in simulation to code humanoid robots to perform various tasks, including sports and social activity.",
+    "image": "https://framerusercontent.com/images/LSKbHyt5obMoXE9JOfZx7sxAk.webp",
+    "featured": false
+  },
+  {
+    "id": "skybeta",
+    "title": "SkyBeta",
+    "category": "Aerial",
+    "status": "Active",
+    "description": "Building low-cost microdrones that operate in GPS-denied environments using SLAM and visual odometry.",
+    "image": "https://framerusercontent.com/images/DxJb54SwSr5ypBbY4UuWwlL6SkU.png",
+    "featured": false
+  }
+]

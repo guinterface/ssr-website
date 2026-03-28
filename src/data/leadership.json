@@ -1,0 +1,100 @@
+[
+  {
+    "id": "rohan-bhowmik",
+    "name": "Rohan Bhowmik",
+    "role": "Co-President",
+    "image": "https://framerusercontent.com/images/ZpFEm0qStBWuEFTNQzK2oOSKCp8.jpeg",
+    "group": "Leadership"
+  },
+  {
+    "id": "luca-higgins",
+    "name": "Luca Higgins",
+    "role": "Co-President",
+    "image": "https://framerusercontent.com/images/35cz9XDxClhNDuEZlBfR3OkxeE.jpeg",
+    "group": "Leadership"
+  },
+  {
+    "id": "guilherme-simioni",
+    "name": "Guilherme Simioni",
+    "role": "Vice President",
+    "image": "https://framerusercontent.com/images/H25iEDtpHPDcTF1DaBY2vCvXWJY.jpg",
+    "group": "Leadership"
+  },
+  {
+    "id": "iris-xu",
+    "name": "Iris Xu",
+    "role": "Financial Officer",
+    "image": "https://framerusercontent.com/images/l2YSTnyM9sTl4raMZ2BAbElVPcQ.jpg",
+    "group": "Leadership"
+  },
+  {
+    "id": "artash-nath",
+    "name": "Artash Nath",
+    "role": "Board Member — UAV & DroneHacks Lead",
+    "image": "https://framerusercontent.com/images/SKgTYKLBU5Vel29yG5jbsia8so.jpg",
+    "group": "Board"
+  },
+  {
+    "id": "felicie-hoffmann",
+    "name": "Felicie Hoffmann",
+    "role": "Board Member — RoboSub Operations Lead",
+    "image": "https://framerusercontent.com/images/EsPs6V1oOSQJpwkJLf7ZTwn3Qc.png",
+    "group": "Board"
+  },
+  {
+    "id": "bekhruz-malikov",
+    "name": "Bekhruz Malikov",
+    "role": "Board Member — UAV EE Lead",
+    "image": "https://framerusercontent.com/images/aqvgXU5hEAOBAQMHsCDQ6uLYVE.jpeg",
+    "group": "Board"
+  },
+  {
+    "id": "anish-bayya",
+    "name": "Anish Bayya",
+    "role": "Advisory Officer — UAV Lead",
+    "image": "https://framerusercontent.com/images/poPc9VN60QUgJnwSezKWHnS811E.png",
+    "group": "Board"
+  },
+  {
+    "id": "sam-chen",
+    "name": "Sam Chen",
+    "role": "Stanford Escape Team Lead",
+    "image": "https://framerusercontent.com/images/Sa0Lg0LFOAmtWDynMLdWhIRZcE.jpeg",
+    "group": "Team Leads"
+  },
+  {
+    "id": "mark-leone",
+    "name": "Mark Leone",
+    "role": "Conservation Tech Lead",
+    "image": "https://framerusercontent.com/images/81Y9C26VKwoulyUQXrGDSLtz8.png",
+    "group": "Team Leads"
+  },
+  {
+    "id": "brody-kladis",
+    "name": "Brody Kladis",
+    "role": "Combat Robotics Co-Lead",
+    "image": "https://framerusercontent.com/images/ngQMpxwdPtJj4BH7X7Z64SEHg.jpeg",
+    "group": "Team Leads"
+  },
+  {
+    "id": "dawson-brej",
+    "name": "Dawson Brej",
+    "role": "Combat Robotics Co-Lead",
+    "image": "https://framerusercontent.com/images/ua6DkK7jtNF8WNaUuNbVWXAL9W4.jpg",
+    "group": "Team Leads"
+  },
+  {
+    "id": "ryota-sato",
+    "name": "Ryota Sato",
+    "role": "RoboSub EE Lead",
+    "image": "https://framerusercontent.com/images/SokIU92CoQ9Q3OKgNVPLvN8zfIc.jpeg",
+    "group": "Team Leads"
+  },
+  {
+    "id": "eric-liang",
+    "name": "Eric Liang",
+    "role": "BuilderBot Co-Lead",
+    "image": "https://framerusercontent.com/images/bK6Jya92boyBp8ZH2ycMH2PwNNM.jpeg",
+    "group": "Team Leads"
+  }
+]

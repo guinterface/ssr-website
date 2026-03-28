@@ -1,0 +1,72 @@
+[
+  {
+    "id": "boeing",
+    "name": "Boeing",
+    "logo": "https://framerusercontent.com/images/xGGez5wLVGUMfIztIZzEkXH39s.png",
+    "website": "https://www.boeing.com",
+    "group": "industry"
+  },
+  {
+    "id": "blue-origin",
+    "name": "Blue Origin",
+    "logo": "https://framerusercontent.com/images/jGLwrI1lzHixp0R5WNvGGws4.png",
+    "website": "https://www.blueorigin.com",
+    "group": "industry"
+  },
+  {
+    "id": "assu",
+    "name": "Associated Students of Stanford University",
+    "logo": null,
+    "website": "https://assu.stanford.edu",
+    "group": "institutional"
+  },
+  {
+    "id": "stanford-engineering",
+    "name": "Stanford Engineering",
+    "logo": "https://framerusercontent.com/images/44GG65RJAvCB2JryOsnHJpCMzXc.png",
+    "website": "https://engineering.stanford.edu",
+    "group": "institutional"
+  },
+  {
+    "id": "stanford-robotics-center",
+    "name": "Stanford Robotics Center",
+    "logo": "https://framerusercontent.com/images/44GG65RJAvCB2JryOsnHJpCMzXc.png",
+    "website": "https://robotics.stanford.edu",
+    "group": "institutional"
+  },
+  {
+    "id": "neros",
+    "name": "Neros",
+    "logo": "https://framerusercontent.com/images/o8qT7uT6pmHBJqRnvObjA0Ua2R4.png",
+    "website": null,
+    "group": "partner"
+  },
+  {
+    "id": "realsense",
+    "name": "RealSense",
+    "logo": "https://framerusercontent.com/images/F4HE3fPdS9A9v9kr2l6CspK4GWo.png",
+    "website": null,
+    "group": "partner"
+  },
+  {
+    "id": "acs",
+    "name": "ACS",
+    "logo": "https://framerusercontent.com/images/VfrTpzBzLdw7IlVtZzwNJpwgDw.png",
+    "website": null,
+    "group": "partner"
+  },
+  {
+    "id": "wing",
+    "name": "Wing",
+    "logo": "https://framerusercontent.com/images/VfrTpzBzLdw7IlVtZzwNJpwgDw.png",
+    "website": null,
+    "group": "partner"
+  },
+  {
+    "id": "skydio",
+    "name": "Skydio",
+    "logo": "https://framerusercontent.com/images/VfrTpzBzLdw7IlVtZzwNJpwgDw.png",
+    "website": null,
+    "group": "partner"
+  }
+]

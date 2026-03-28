@@ -1,0 +1,82 @@
+[
+  {
+    "id": "spring-showcase-2025",
+    "title": "Spring Showcase 2025",
+    "date": "2025-05-15",
+    "category": "Showcase",
+    "description": "Our flagship annual demo day. Come see what Stanford Student Robotics teams have been building all year — live robot demos, poster presentations, and awards.",
+    "image": "",
+    "featured": true,
+    "location": "Thornton Center Courtyard"
+  },
+  {
+    "id": "ros2-workshop-april",
+    "title": "ROS 2 Intro Workshop",
+    "date": "2025-04-08",
+    "category": "Workshop",
+    "description": "Hands-on introduction to ROS 2. We'll cover nodes, topics, services, and build a simple mobile robot simulation in Gazebo. Bring your laptop.",
+    "image": "",
+    "featured": false,
+    "location": "Gates B12"
+  },
+  {
+    "id": "icra-2025-trip",
+    "title": "ICRA 2025 — Atlanta",
+    "date": "2025-05-19",
+    "category": "Conference",
+    "description": "The club is sending a delegation to the International Conference on Robotics and Automation. Applications to join the group are now open.",
+    "image": "",
+    "featured": false,
+    "location": "Atlanta, GA"
+  },
+  {
+    "id": "hardware-night-march",
+    "title": "Hardware Night",
+    "date": "2025-03-27",
+    "category": "Social",
+    "description": "Monthly open shop night. Bring your own project or just come learn. Club machines and materials available. Seniors and grad students on hand to help.",
+    "image": "",
+    "featured": false,
+    "location": "Product Realization Lab"
+  },
+  {
+    "id": "controls-seminar-1",
+    "title": "Controls Seminar: MPC in Practice",
+    "date": "2025-04-22",
+    "category": "Seminar",
+    "description": "Club alum and PhD candidate Leo Park walks through model predictive control — intuition, implementation tradeoffs, and examples from his legged locomotion research.",
+    "image": "",
+    "featured": false,
+    "location": "Packard 101"
+  },
+  {
+    "id": "ieee-makathon-2025",
+    "title": "IEEE Makathon 2025",
+    "date": "2025-04-12",
+    "category": "Competition",
+    "description": "24-hour hardware competition co-organized with Stanford IEEE. Open to all undergrads. Cash prizes, sponsor demos, and hardware kits provided.",
+    "image": "",
+    "featured": true,
+    "location": "Huang Engineering Center"
+  },
+  {
+    "id": "end-of-year-banquet",
+    "title": "End-of-Year Banquet",
+    "date": "2025-06-04",
+    "category": "Social",
+    "description": "Celebrate the year with the full club. Awards for most impactful project, best newcomer, and leadership recognition. Free food and photos.",
+    "image": "",
+    "featured": false,
+    "location": "Roble Arts Gym"
+  },
+  {
+    "id": "ml-for-robotics-series-1",
+    "title": "ML for Robotics — Session 1: Perception",
+    "date": "2025-03-18",
+    "category": "Workshop",
+    "description": "First session of a four-part series. Covers visual perception pipelines: YOLO-based detection, depth estimation, and point-cloud processing for real-time robot applications.",
+    "image": "",
+    "featured": false,
+    "location": "Skilling Auditorium"
+  }
+]
