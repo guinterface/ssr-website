@@ -19,7 +19,7 @@ export default function Home() {
       <div className="container">
         <JoinCta
           headline="Ready to build something real?"
-          body="We take on students from all disciplines — engineering, design, and everything in between. Applications open every quarter."
+          body="We take on students from all disciplines, engineering, design, and everything in between. We are waiting for you."
         />
       </div>
       <SponsorsPreview sponsors={sponsors} />
