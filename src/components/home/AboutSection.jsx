@@ -4,15 +4,15 @@ import ScrollReveal from '../ui/ScrollReveal'
 const PILLARS = [
   {
     label: 'Build',
-    body:  'Real hardware, real stakes. We ship autonomous systems that compete, perform, and occasionally surprise us.',
+    body:  'You will have the chance to engage directly with the design and construction of real robots, from first sketch to final demo.',
   },
   {
     label: 'Collaborate',
-    body:  'Mechanical, electrical, software — every discipline under one roof. The best ideas come from the edges.',
+    body:  'Mechanical, electrical, software, or whatever your expertise may be, you are welcome here.',
   },
   {
-    label: 'Compete',
-    body:  'From regional showcases to national competitions, we test our work against the best in the country.',
+    label: 'Learn',
+    body:  'No experience needed, just curiosity. You will grow through doing, guided by peers who have been exactly where you are.',
   },
 ]
 
@@ -64,7 +64,7 @@ export default function AboutSection() {
                 maxWidth:   '48ch',
                 margin:     0,
               }}>
-                We're an interdisciplinary student organization building autonomous systems — from legged robots and drones to computer-vision platforms. Open to undergrads and grad students across all departments, no experience required.
+                We're an interdisciplinary student organization building autonomous systems. Open to undergrads and grad students across all departments, no experience required.
               </p>
             </ScrollReveal>
           </div>
