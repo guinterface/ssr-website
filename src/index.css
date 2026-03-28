@@ -123,6 +123,14 @@ img {
 ::-webkit-scrollbar-thumb  { background: var(--color-border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-text-tertiary); }
 
+/* ─── Hero grid column drift ────────────────────────────────── */
+/* CSS animation runs on the compositor thread (GPU), not JS main thread. */
+@keyframes hero-col-drift {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(var(--col-y, 0px)); }
+  100% { transform: translateY(0px); }
+}
+
 /* ─── Magazine grid (Projects page) ────────────────────────── */
 .mag-row-a {
   display: grid;
