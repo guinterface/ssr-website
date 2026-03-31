@@ -2,7 +2,6 @@ import { usePageTitle }  from '../hooks/usePageTitle'
 import Hero            from '../components/home/Hero'
 import ImageStrip      from '../components/home/ImageStrip'
 import AboutSection    from '../components/home/AboutSection'
-import StatsSection    from '../components/home/StatsSection'
 import SponsorsPreview from '../components/home/SponsorsPreview'
 import JoinCta         from '../components/ui/JoinCta'
 import projects        from '../data/projects.json'
@@ -15,7 +14,6 @@ export default function Home() {
       <Hero />
       <ImageStrip projects={projects} />
       <AboutSection />
-      <StatsSection />
       <div className="container">
         <JoinCta
           headline="Ready to build something real?"

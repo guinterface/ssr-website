@@ -123,6 +123,12 @@ img {
 ::-webkit-scrollbar-thumb  { background: var(--color-border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-text-tertiary); }
 
+/* ─── Hero HUD stat pulse ───────────────────────────────────── */
+@keyframes hud-pulse {
+  0%, 100% { opacity: 1;   transform: scale(1);   }
+  50%       { opacity: 0.3; transform: scale(0.75); }
+}
+
 /* ─── Hero grid column drift ────────────────────────────────── */
 /* CSS animation runs on the compositor thread (GPU), not JS main thread. */
 @keyframes hero-col-drift {
