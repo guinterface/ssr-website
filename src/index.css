@@ -217,6 +217,9 @@ img {
     grid-template-columns: 1fr !important;
     gap: 40px !important;
   }
+  .contact-header-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* ─── Contact grids ─────────────────────────────────────────── */
@@ -251,5 +254,18 @@ img {
   .contact-border-left {
     border-left: none !important;
     padding-left: 0 !important;
+  }
+  /* New contact page layouts */
+  .contact-channels-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .partner-panel {
+    grid-template-columns: 1fr !important;
+  }
+  .partner-panel-right {
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-top: 1px solid var(--color-border);
+    padding-top: 28px;
   }
 }
