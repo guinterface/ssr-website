@@ -134,7 +134,7 @@ export default function Navbar() {
               style={{
                 backgroundColor: 'var(--color-accent)',
                 color:           '#fff',
-                fontFamily:      'Inter, sans-serif',
+                fontFamily:      'Plus Jakarta Sans, sans-serif',
                 fontSize:        '12px',
                 fontWeight:      600,
                 letterSpacing:   '0.06em',
@@ -223,7 +223,7 @@ export default function Navbar() {
                     display:         'block',
                     backgroundColor: 'var(--color-accent)',
                     color:           '#fff',
-                    fontFamily:      'Inter, sans-serif',
+                    fontFamily:      'Plus Jakarta Sans, sans-serif',
                     fontSize:        '13px',
                     fontWeight:      600,
                     letterSpacing:   '0.06em',

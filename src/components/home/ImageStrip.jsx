@@ -40,7 +40,7 @@ export default function ImageStrip({ projects = [], speed = 65 }) {
       <div className="container py-5 pb-0">
         <p
           style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Plus Jakarta Sans, sans-serif',
             fontSize: '11px',
             fontWeight: 600,
             letterSpacing: '0.1em',
@@ -103,7 +103,7 @@ export default function ImageStrip({ projects = [], speed = 65 }) {
               {/* Caption */}
               <p
                 style={{
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Plus Jakarta Sans, sans-serif',
                   fontSize: '12px',
                   fontWeight: 500,
                   letterSpacing: '0.04em',
@@ -121,12 +121,6 @@ export default function ImageStrip({ projects = [], speed = 65 }) {
         </div>
       </div>
 
-      <style>{`
-        @keyframes imageScroll {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-      `}</style>
     </div>
   )
 }

@@ -33,7 +33,7 @@ export default function Marquee({ items = [], speed = 40 }) {
             <span key={i} className="flex items-center">
               <span
                 style={{
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Plus Jakarta Sans, sans-serif',
                   fontSize: '11px',
                   fontWeight: 500,
                   letterSpacing: '0.1em',

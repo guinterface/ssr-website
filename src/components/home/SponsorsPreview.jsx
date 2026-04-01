@@ -69,7 +69,7 @@ export default function SponsorsPreview({ sponsors = [] }) {
 
         <ScrollReveal>
           <p style={{
-            fontFamily:    'Inter, sans-serif',
+            fontFamily:    'Plus Jakarta Sans, sans-serif',
             fontSize:      '11px',
             fontWeight:    600,
             letterSpacing: '0.1em',
@@ -99,7 +99,7 @@ export default function SponsorsPreview({ sponsors = [] }) {
             <Link
               to="/sponsors"
               style={{
-                fontFamily:     'Inter, sans-serif',
+                fontFamily:     'Plus Jakarta Sans, sans-serif',
                 fontSize:       '13px',
                 fontWeight:     500,
                 letterSpacing:  '0.02em',

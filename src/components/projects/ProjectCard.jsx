@@ -89,7 +89,7 @@ export default function ProjectCard({ project, onSelect, variants }) {
 
         {/* Description — 2-line clamp */}
         <p style={{
-          fontFamily:      'Inter, sans-serif',
+          fontFamily:      'Plus Jakarta Sans, sans-serif',
           fontSize:        '13px',
           lineHeight:      1.7,
           color:           'var(--color-text-secondary)',

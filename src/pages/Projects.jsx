@@ -70,7 +70,7 @@ export default function Projects() {
                   key={cat}
                   onClick={() => setCategory(cat)}
                   style={{
-                    fontFamily:      'Inter, sans-serif',
+                    fontFamily:      'Plus Jakarta Sans, sans-serif',
                     fontSize:        '12px',
                     fontWeight:      600,
                     letterSpacing:   '0.06em',

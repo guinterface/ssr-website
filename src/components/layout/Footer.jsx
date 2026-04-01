@@ -5,7 +5,6 @@ const EMAIL     = 'stanfordroboclub@gmail.com'
 const SLACK_URL = 'https://join.slack.com/t/stanfordrobotics/shared_invite/placeholder'
 
 const NAV_LINKS = [
-  { label: 'Home',       to: '/'          },
   { label: 'Projects',   to: '/projects'  },
   { label: 'Leadership', to: '/leadership'},
   { label: 'Events',     to: '/events'    },
@@ -15,60 +14,153 @@ const NAV_LINKS = [
 
 export default function Footer() {
   const { dark } = useTheme()
+
   return (
-    <footer className="border-t border-border">
-      <div className="container py-12">
+    <footer style={{
+      borderTop:       '1px solid var(--color-border)',
+      backgroundColor: 'var(--color-surface-muted)',
+    }}>
+      <div className="container" style={{ paddingTop: '64px', paddingBottom: '40px' }}>
 
-        {/* Top row */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-border">
+        {/* Three-column top row */}
+        <div
+          className="footer-grid"
+          style={{
+            display:             'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap:                 'clamp(32px, 6vw, 80px)',
+            paddingBottom:       '48px',
+            borderBottom:        '1px solid var(--color-border)',
+            alignItems:          'start',
+          }}
+        >
 
-          {/* Logo + tagline */}
-          <Link to="/" className="flex items-center no-underline">
-            <img
-              src={dark ? '/dark-logo.png' : '/light-logo.png'}
-              alt="Stanford Student Robotics"
-              style={{ height: '28px', width: 'auto', display: 'block' }}
-            />
-          </Link>
-
-          {/* Contact + Slack */}
-          <div className="flex items-center gap-5 flex-wrap">
-            <a
-              href={`mailto:${EMAIL}`}
-              className="text-label text-text-tertiary hover:text-text-secondary no-underline transition-colors duration-200"
-              style={{ letterSpacing: '0.02em' }}
-            >
-              {EMAIL}
-            </a>
-            <a
-              href={SLACK_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-label uppercase text-text-tertiary hover:text-text-secondary no-underline transition-colors duration-200"
-              style={{ letterSpacing: '0.08em' }}
-            >
-              Join our Slack ↗
-            </a>
+          {/* Col 1 — Brand */}
+          <div>
+            <Link to="/" style={{ display: 'inline-block', marginBottom: '20px' }}>
+              <img
+                src={dark ? '/dark-logo.png' : '/light-logo.png'}
+                alt="Stanford Student Robotics"
+                style={{ height: '28px', width: 'auto', display: 'block' }}
+              />
+            </Link>
+            <p style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontSize:   '13px',
+              lineHeight: 1.7,
+              color:      'var(--color-text-tertiary)',
+              margin:     0,
+              maxWidth:   '26ch',
+            }}>
+              Stanford's interdisciplinary student robotics club. Open to all majors, no experience required.
+            </p>
           </div>
+
+          {/* Col 2 — Navigation */}
+          <div>
+            <p style={{
+              fontFamily:    "'Plus Jakarta Sans', sans-serif",
+              fontSize:      '10px',
+              fontWeight:    700,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color:         'var(--color-text-tertiary)',
+              margin:        '0 0 16px',
+            }}>
+              Pages
+            </p>
+            <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {NAV_LINKS.map(({ label, to }) => (
+                <NavLink
+                  key={to}
+                  to={to}
+                  style={({ isActive }) => ({
+                    fontFamily:     "'Plus Jakarta Sans', sans-serif",
+                    fontSize:       '13px',
+                    fontWeight:     500,
+                    color:          isActive ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
+                    textDecoration: 'none',
+                    transition:     'color 0.15s ease',
+                  })}
+                >
+                  {label}
+                </NavLink>
+              ))}
+            </nav>
+          </div>
+
+          {/* Col 3 — Contact */}
+          <div>
+            <p style={{
+              fontFamily:    "'Plus Jakarta Sans', sans-serif",
+              fontSize:      '10px',
+              fontWeight:    700,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color:         'var(--color-text-tertiary)',
+              margin:        '0 0 16px',
+            }}>
+              Contact
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <a
+                href={`mailto:${EMAIL}`}
+                style={{
+                  fontFamily:     "'Plus Jakarta Sans', sans-serif",
+                  fontSize:       '13px',
+                  fontWeight:     500,
+                  color:          'var(--color-text-secondary)',
+                  textDecoration: 'none',
+                  transition:     'color 0.15s ease',
+                }}
+              >
+                {EMAIL}
+              </a>
+              <a
+                href={SLACK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily:     "'Plus Jakarta Sans', sans-serif",
+                  fontSize:       '13px',
+                  fontWeight:     500,
+                  color:          'var(--color-text-secondary)',
+                  textDecoration: 'none',
+                  transition:     'color 0.15s ease',
+                }}
+              >
+                Slack community ↗
+              </a>
+            </div>
+          </div>
+
         </div>
 
         {/* Bottom row */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8">
-          <nav className="flex items-center gap-6 flex-wrap justify-center">
-            {NAV_LINKS.map(({ label, to }) => (
-              <NavLink
-                key={to}
-                to={to}
-                end={to === '/'}
-                className="text-label uppercase text-text-tertiary hover:text-text-secondary no-underline transition-colors duration-200"
-              >
-                {label}
-              </NavLink>
-            ))}
-          </nav>
-
-          <p className="text-label uppercase text-text-tertiary">
+        <div style={{
+          display:        'flex',
+          alignItems:     'center',
+          justifyContent: 'space-between',
+          paddingTop:     '24px',
+          flexWrap:       'wrap',
+          gap:            '12px',
+        }}>
+          <p style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontSize:   '11px',
+            fontWeight: 500,
+            color:      'var(--color-text-tertiary)',
+            margin:     0,
+          }}>
             © {new Date().getFullYear()} Stanford Student Robotics
+          </p>
+          <p style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontSize:   '11px',
+            color:      'var(--color-text-tertiary)',
+            margin:     0,
+          }}>
+            Stanford University · Palo Alto, CA
           </p>
         </div>
 

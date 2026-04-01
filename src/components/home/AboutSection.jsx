@@ -28,7 +28,7 @@ export default function AboutSection() {
           <div>
             <ScrollReveal>
               <p style={{
-                fontFamily:    'Inter, sans-serif',
+                fontFamily:    'Plus Jakarta Sans, sans-serif',
                 fontSize:      '11px',
                 fontWeight:    600,
                 letterSpacing: '0.1em',
@@ -57,7 +57,7 @@ export default function AboutSection() {
 
             <ScrollReveal delay={0.1}>
               <p style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Plus Jakarta Sans, sans-serif',
                 fontSize:   'clamp(14px, 1.5vw, 16px)',
                 lineHeight: 1.75,
                 color:      'var(--color-text-secondary)',
@@ -94,7 +94,7 @@ export default function AboutSection() {
                     {label}
                   </p>
                   <p style={{
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Plus Jakarta Sans, sans-serif',
                     fontSize:   '14px',
                     lineHeight: 1.6,
                     color:      'var(--color-text-secondary)',

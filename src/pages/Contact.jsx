@@ -47,7 +47,7 @@ function Divider() {
 function Label({ children }) {
   return (
     <p style={{
-      fontFamily:    'Inter, sans-serif',
+      fontFamily:    'Plus Jakarta Sans, sans-serif',
       fontSize:      '11px',
       fontWeight:    600,
       letterSpacing: '0.12em',
@@ -104,7 +104,7 @@ function JoinSection() {
         <motion.p
           {...fadeUp(0.3)}
           style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Plus Jakarta Sans, sans-serif',
             fontSize:   'clamp(15px, 1.6vw, 17px)',
             lineHeight: 1.75,
             color:      'var(--color-text-secondary)',
@@ -128,7 +128,7 @@ function JoinSection() {
               gap:             '8px',
               backgroundColor: 'var(--color-accent)',
               color:           '#fff',
-              fontFamily:      'Inter, sans-serif',
+              fontFamily:      'Plus Jakarta Sans, sans-serif',
               fontSize:        '13px',
               fontWeight:      600,
               letterSpacing:   '0.05em',
@@ -153,7 +153,7 @@ function JoinSection() {
               alignItems:     'center',
               gap:            '8px',
               color:          'var(--color-text-secondary)',
-              fontFamily:     'Inter, sans-serif',
+              fontFamily:     'Plus Jakarta Sans, sans-serif',
               fontSize:       '13px',
               fontWeight:     600,
               letterSpacing:  '0.05em',
@@ -187,7 +187,7 @@ function JoinSection() {
           ].map(({ n, heading, body }) => (
             <div key={n} style={{ display: 'flex', gap: '20px' }}>
               <span style={{
-                fontFamily:    'Inter, sans-serif',
+                fontFamily:    'Plus Jakarta Sans, sans-serif',
                 fontSize:      '11px',
                 fontWeight:    700,
                 letterSpacing: '0.08em',
@@ -210,7 +210,7 @@ function JoinSection() {
                   {heading}
                 </p>
                 <p style={{
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Plus Jakarta Sans, sans-serif',
                   fontSize:   '14px',
                   lineHeight: 1.7,
                   color:      'var(--color-text-secondary)',
@@ -256,7 +256,7 @@ function ContactSection() {
             {EMAIL}
           </a>
           <p style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Plus Jakarta Sans, sans-serif',
             fontSize:   '14px',
             lineHeight: 1.7,
             color:      'var(--color-text-tertiary)',
@@ -286,7 +286,7 @@ function ContactSection() {
               display:        'inline-flex',
               alignItems:     'center',
               gap:            '6px',
-              fontFamily:     'Inter, sans-serif',
+              fontFamily:     'Plus Jakarta Sans, sans-serif',
               fontSize:       '13px',
               fontWeight:     600,
               letterSpacing:  '0.05em',
@@ -340,7 +340,7 @@ function PartnerSection() {
             Partner with Stanford Student Robotics.
           </h2>
           <p style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Plus Jakarta Sans, sans-serif',
             fontSize:   'clamp(15px, 1.6vw, 17px)',
             lineHeight: 1.75,
             color:      'var(--color-text-secondary)',
@@ -381,7 +381,7 @@ function PartnerSection() {
               {heading}
             </p>
             <p style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Plus Jakarta Sans, sans-serif',
               fontSize:   '14px',
               lineHeight: 1.72,
               color:      'var(--color-text-secondary)',
@@ -401,7 +401,7 @@ function PartnerSection() {
             display:        'inline-flex',
             alignItems:     'center',
             gap:            '8px',
-            fontFamily:     'Inter, sans-serif',
+            fontFamily:     'Plus Jakarta Sans, sans-serif',
             fontSize:       '13px',
             fontWeight:     600,
             letterSpacing:  '0.05em',
@@ -433,7 +433,7 @@ export default function Contact() {
         <motion.p
           {...fadeUp(0.05)}
           style={{
-            fontFamily:    'Inter, sans-serif',
+            fontFamily:    'Plus Jakarta Sans, sans-serif',
             fontSize:      '11px',
             fontWeight:    600,
             letterSpacing: '0.12em',

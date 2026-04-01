@@ -54,7 +54,7 @@ function StatItem({ value, suffix, label }) {
       </span>
       <span
         style={{
-          fontFamily: 'Inter, sans-serif',
+          fontFamily: 'Plus Jakarta Sans, sans-serif',
           fontSize: '11px',
           fontWeight: 600,
           letterSpacing: '0.1em',
@@ -79,7 +79,7 @@ export default function StatsSection() {
           <p
             className="text-center mb-16"
             style={{
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Plus Jakarta Sans, sans-serif',
               fontSize: '11px',
               fontWeight: 600,
               letterSpacing: '0.1em',

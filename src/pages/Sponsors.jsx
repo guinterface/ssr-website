@@ -50,7 +50,7 @@ function FeaturedSponsors() {
       {/* Label */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '48px' }}>
         <span style={{
-          fontFamily:    'Inter, sans-serif',
+          fontFamily:    'Plus Jakarta Sans, sans-serif',
           fontSize:      '10px',
           fontWeight:    700,
           letterSpacing: '0.12em',
@@ -271,7 +271,7 @@ function ScrollingBands() {
           {/* Label */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '28px' }}>
             <span style={{
-              fontFamily:    'Inter, sans-serif',
+              fontFamily:    'Plus Jakarta Sans, sans-serif',
               fontSize:      '10px',
               fontWeight:    700,
               letterSpacing: '0.12em',
@@ -326,7 +326,7 @@ function WhySponsor() {
     <div style={{ marginTop: '96px', paddingTop: '72px', borderTop: '1px solid var(--color-border)' }}>
       <div style={{ marginBottom: '48px' }}>
         <p style={{
-          fontFamily: 'Inter, sans-serif', fontSize: '11px', fontWeight: 600,
+          fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '11px', fontWeight: 600,
           letterSpacing: '0.1em', textTransform: 'uppercase',
           color: 'var(--color-accent)', margin: '0 0 14px',
         }}>
@@ -356,7 +356,7 @@ function WhySponsor() {
             <h3 style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: '17px', fontWeight: 600, letterSpacing: '-0.018em', color: 'var(--color-text-primary)', margin: '0 0 10px' }}>
               {heading}
             </h3>
-            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '14px', lineHeight: 1.72, color: 'var(--color-text-secondary)', margin: 0 }}>
+            <p style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '14px', lineHeight: 1.72, color: 'var(--color-text-secondary)', margin: 0 }}>
               {description}
             </p>
           </motion.div>
@@ -372,7 +372,7 @@ function WhySponsor() {
           <p style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 'clamp(17px, 2vw, 21px)', fontWeight: 600, letterSpacing: '-0.02em', color: '#fff', margin: '0 0 4px' }}>
             Interested in sponsoring?
           </p>
-          <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.65)', margin: 0 }}>
+          <p style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.65)', margin: 0 }}>
             Reach out and we'll send over our sponsorship deck.
           </p>
         </div>
@@ -381,7 +381,7 @@ function WhySponsor() {
           style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
             backgroundColor: '#fff', color: 'var(--color-accent)',
-            fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: 700,
+            fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '13px', fontWeight: 700,
             letterSpacing: '0.04em', textTransform: 'uppercase',
             padding: '13px 26px', borderRadius: '6px',
             textDecoration: 'none', flexShrink: 0, transition: 'opacity 0.2s ease',

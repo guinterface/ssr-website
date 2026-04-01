@@ -1,6 +1,25 @@
 import { useRef, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform, useReducedMotion, useInView } from 'framer-motion'
 import HeroVisualGrid from './HeroVisualGrid'
+import events from '../../data/events.json'
+
+// ── Resolve which event to surface ───────────────────────────────
+const TODAY = new Date().toISOString().slice(0, 10)
+const upcoming = events
+  .filter(e => e.date >= TODAY)
+  .sort((a, b) => a.date.localeCompare(b.date))
+const past = events
+  .filter(e => e.date < TODAY)
+  .sort((a, b) => b.date.localeCompare(a.date))
+const FEATURED_EVENT   = upcoming[0] ?? past[0] ?? null
+const IS_UPCOMING      = upcoming.length > 0
+
+function fmtDate(dateStr) {
+  return new Date(dateStr + 'T00:00:00').toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+  })
+}
 
 const fadeUp = (delay) => ({
   initial:    { opacity: 0, y: 20 },
@@ -16,6 +35,113 @@ const STATS = [
   { value: 10,  suffix: '',  label: 'Teams',          live: false },
   { value: 3,   suffix: '',  label: 'Competitions',   live: false },
 ]
+
+// ── Event strip — compact activity log row ───────────────────────
+function HudEventRow() {
+  const [hovered, setHovered] = useState(false)
+  if (!FEATURED_EVENT) return null
+
+  return (
+    <Link
+      to="/events"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        display:        'flex',
+        alignItems:     'center',
+        justifyContent: 'space-between',
+        gap:            '16px',
+        maxWidth:       'var(--content-max)',
+        margin:         '0 auto',
+        padding:        '9px var(--gutter)',
+        textDecoration: 'none',
+        opacity:        hovered ? 1 : 0.8,
+        transition:     'opacity 0.15s ease',
+      }}
+    >
+      {/* Left — status + title */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+        {/* Status dot */}
+        <span style={{
+          display:         'inline-block',
+          width:           '5px',
+          height:          '5px',
+          borderRadius:    '50%',
+          backgroundColor: IS_UPCOMING ? '#16A34A' : 'var(--color-text-tertiary)',
+          flexShrink:      0,
+          animation:       IS_UPCOMING ? 'hud-pulse 2.2s ease-in-out infinite' : 'none',
+        }} />
+
+        {/* Label */}
+        <span style={{
+          fontFamily:    'Plus Jakarta Sans, sans-serif',
+          fontSize:      '9px',
+          fontWeight:    700,
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          color:         IS_UPCOMING ? '#16A34A' : 'var(--color-text-tertiary)',
+          flexShrink:    0,
+        }}>
+          {IS_UPCOMING ? 'Upcoming' : 'Last event'}
+        </span>
+
+        {/* Separator */}
+        <span style={{ color: 'var(--color-border)', fontSize: '11px', flexShrink: 0 }}>·</span>
+
+        {/* Title */}
+        <span style={{
+          fontFamily:   '"Space Grotesk", sans-serif',
+          fontSize:     '12px',
+          fontWeight:   600,
+          letterSpacing: '-0.01em',
+          color:        'var(--color-text-primary)',
+          overflow:     'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace:   'nowrap',
+        }}>
+          {FEATURED_EVENT.title}
+        </span>
+      </div>
+
+      {/* Right — date + location + arrow */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+        <span style={{
+          fontFamily:  'Plus Jakarta Sans, sans-serif',
+          fontSize:    '11px',
+          fontWeight:  500,
+          color:       'var(--color-text-tertiary)',
+          letterSpacing: '0.01em',
+        }}>
+          {fmtDate(FEATURED_EVENT.date)}
+        </span>
+        {FEATURED_EVENT.location && (
+          <>
+            <span style={{ color: 'var(--color-border)', fontSize: '11px' }}>·</span>
+            <span style={{
+              fontFamily:   'Plus Jakarta Sans, sans-serif',
+              fontSize:     '11px',
+              color:        'var(--color-text-tertiary)',
+              maxWidth:     '18ch',
+              overflow:     'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace:   'nowrap',
+            }}>
+              {FEATURED_EVENT.location}
+            </span>
+          </>
+        )}
+        <span style={{
+          fontFamily: 'Plus Jakarta Sans, sans-serif',
+          fontSize:   '11px',
+          color:      hovered ? 'var(--color-text-secondary)' : 'var(--color-text-tertiary)',
+          transition: 'color 0.15s ease',
+        }}>
+          →
+        </span>
+      </div>
+    </Link>
+  )
+}
 
 // ── Stat item — counter + fill bar, telemetry style ──────────────
 function HudStat({ value, suffix, label, live, delay = 0, first = false }) {
@@ -87,7 +213,7 @@ function HudStat({ value, suffix, label, live, delay = 0, first = false }) {
 
       {/* Label */}
       <p style={{
-        fontFamily:    'Inter, sans-serif',
+        fontFamily:    'Plus Jakarta Sans, sans-serif',
         fontSize:      '10px',
         fontWeight:    600,
         letterSpacing: '0.1em',
@@ -154,7 +280,7 @@ export default function Hero() {
         <motion.p
           {...fadeUp(0.2)}
           style={{
-            fontFamily:    'Inter, sans-serif',
+            fontFamily:    'Plus Jakarta Sans, sans-serif',
             fontSize:      'clamp(12px, 1.4vw, 15px)',
             fontWeight:    600,
             letterSpacing: '0.14em',
@@ -196,7 +322,7 @@ export default function Hero() {
         <motion.p
           {...fadeUp(0.85)}
           style={{
-            fontFamily:    'Inter, sans-serif',
+            fontFamily:    'Plus Jakarta Sans, sans-serif',
             fontSize:      'clamp(14px, 1.8vw, 16px)',
             fontWeight:    400,
             fontStyle:     'italic',
@@ -209,6 +335,26 @@ export default function Hero() {
           {MOTTO}
         </motion.p>
       </div>
+
+      {/* ── Event strip — just below the navbar ─────────── */}
+      <motion.div
+        initial={{ opacity: 0, y: -6 }}
+        animate={{ opacity: 1, y: 0  }}
+        transition={{ duration: 0.45, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
+        style={{
+          position:             'absolute',
+          top:                  'var(--nav-height)',
+          left:                 0,
+          right:                0,
+          zIndex:               10,
+          borderBottom:         '1px solid var(--color-border)',
+          backgroundColor:      'rgba(var(--color-bg-rgb), 0.75)',
+          backdropFilter:       'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+        }}
+      >
+        <HudEventRow />
+      </motion.div>
 
       {/* ── Stats HUD — overlays bottom of hero ──────────── */}
       {/*

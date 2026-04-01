@@ -125,7 +125,7 @@ function EditorialBlock({
           {/* Description — hero and lg only */}
           {SHOW_DESC[level] && project.description && (
             <p style={{
-              fontFamily:      'Inter, sans-serif',
+              fontFamily:      'Plus Jakarta Sans, sans-serif',
               fontSize:        level === 'hero' ? 'clamp(12px, 1.1vw, 14px)' : '12px',
               lineHeight:      1.6,
               color:           'rgba(255,255,255,0.65)',

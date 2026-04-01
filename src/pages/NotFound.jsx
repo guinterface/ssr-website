@@ -50,7 +50,7 @@ export default function NotFound() {
             Page not found.
           </h1>
           <p style={{
-            fontFamily: 'Inter, sans-serif',
+            fontFamily: 'Plus Jakarta Sans, sans-serif',
             fontSize:   '15px',
             lineHeight: 1.7,
             color:      'var(--color-text-secondary)',

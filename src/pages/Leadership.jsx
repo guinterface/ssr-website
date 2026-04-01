@@ -57,7 +57,7 @@ function GroupDivider({ label }) {
     >
       <div style={{ flex: 1, height: '1px', backgroundColor: 'var(--color-border)' }} />
       <span style={{
-        fontFamily:    'Inter, sans-serif',
+        fontFamily:    'Plus Jakarta Sans, sans-serif',
         fontSize:      '11px',
         fontWeight:    600,
         letterSpacing: '0.1em',
@@ -100,7 +100,7 @@ export default function Leadership() {
             {/* First group gets its own inline label above the grid */}
             {i === 0 && group.label && (
               <p style={{
-                fontFamily:    'Inter, sans-serif',
+                fontFamily:    'Plus Jakarta Sans, sans-serif',
                 fontSize:      '11px',
                 fontWeight:    600,
                 letterSpacing: '0.1em',
@@ -116,8 +116,8 @@ export default function Leadership() {
         ))}
 
         <JoinCta
-          headline="Interested in leading?"
-          body="Officer applications open at the start of each academic year. We look for people who are passionate about robotics and want to help run the club."
+          headline="Want to get more involved?"
+          body="Reach out if you are passionate about robotics and want to help shape the direction of the club. We are always looking for people who want to contribute."
           label="Get in Touch"
         />
       </section>

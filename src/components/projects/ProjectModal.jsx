@@ -133,7 +133,7 @@ export default function ProjectModal({ project, onClose }) {
 
               {/* Description */}
               <p style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Plus Jakarta Sans, sans-serif',
                 fontSize:   '15px',
                 lineHeight: 1.85,
                 color:      'var(--color-text-secondary)',
@@ -160,7 +160,7 @@ export default function ProjectModal({ project, onClose }) {
                           display:        'inline-flex',
                           alignItems:     'center',
                           gap:            '6px',
-                          fontFamily:     'Inter, sans-serif',
+                          fontFamily:     'Plus Jakarta Sans, sans-serif',
                           fontSize:       '13px',
                           fontWeight:     600,
                           letterSpacing:  '0.03em',
@@ -190,7 +190,7 @@ export default function ProjectModal({ project, onClose }) {
                 <>
                   <div style={{ height: '1px', backgroundColor: 'var(--color-border)', margin: '32px 0 24px' }} />
                   <p style={{
-                    fontFamily:    'Inter, sans-serif',
+                    fontFamily:    'Plus Jakarta Sans, sans-serif',
                     fontSize:      '11px',
                     fontWeight:    600,
                     letterSpacing: '0.1em',
@@ -204,7 +204,7 @@ export default function ProjectModal({ project, onClose }) {
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                     {project.members.map(name => (
                       <span key={name} style={{
-                        fontFamily:      'Inter, sans-serif',
+                        fontFamily:      'Plus Jakarta Sans, sans-serif',
                         fontSize:        '13px',
                         fontWeight:      500,
                         color:           'var(--color-text-secondary)',

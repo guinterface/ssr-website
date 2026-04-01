@@ -65,7 +65,7 @@ export default function App() {
           padding:    '8px 16px',
           background: 'var(--color-accent)',
           color:      '#fff',
-          fontFamily: 'Inter, sans-serif',
+          fontFamily: 'Plus Jakarta Sans, sans-serif',
           fontSize:   '13px',
           fontWeight: 600,
           borderRadius: '0 0 4px 4px',

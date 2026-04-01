@@ -163,7 +163,7 @@ export default function LeadershipCard({ member, variants }) {
           {member.name}
         </p>
         <p style={{
-          fontFamily:    'Inter, sans-serif',
+          fontFamily:    'Plus Jakarta Sans, sans-serif',
           fontSize:      '11px',
           fontWeight:    600,
           letterSpacing: '0.07em',

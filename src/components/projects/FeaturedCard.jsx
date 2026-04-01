@@ -83,7 +83,7 @@ export default function FeaturedCard({ project, onSelect, large = false, variant
             {project.title}
           </h3>
           <p style={{
-            fontFamily:      'Inter, sans-serif',
+            fontFamily:      'Plus Jakarta Sans, sans-serif',
             fontSize:        '14px',
             lineHeight:      1.75,
             color:           'var(--color-text-secondary)',
@@ -102,7 +102,7 @@ export default function FeaturedCard({ project, onSelect, large = false, variant
           display:    'inline-flex',
           alignItems: 'center',
           gap:        hovered ? '9px' : '5px',
-          fontFamily: 'Inter, sans-serif',
+          fontFamily: 'Plus Jakarta Sans, sans-serif',
           fontSize:   '12px',
           fontWeight: 600,
           letterSpacing: '0.04em',

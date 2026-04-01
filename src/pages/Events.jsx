@@ -30,7 +30,7 @@ function CategoryPill({ category }) {
       borderRadius:    '100px',
       backgroundColor: bg,
       color,
-      fontFamily:      'Inter, sans-serif',
+      fontFamily:      'Plus Jakarta Sans, sans-serif',
       fontSize:        '10px',
       fontWeight:      600,
       letterSpacing:   '0.07em',
@@ -111,7 +111,7 @@ function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDat
         {WEEKDAYS.map(d => (
           <div key={d} style={{
             textAlign:     'center',
-            fontFamily:    'Inter, sans-serif',
+            fontFamily:    'Plus Jakarta Sans, sans-serif',
             fontSize:      '9px',
             fontWeight:    700,
             letterSpacing: '0.08em',
@@ -156,7 +156,7 @@ function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDat
                   : hasEvent
                     ? 'var(--color-accent)'
                     : 'var(--color-text-primary)',
-                fontFamily:      'Inter, sans-serif',
+                fontFamily:      'Plus Jakarta Sans, sans-serif',
                 fontSize:        '12px',
                 fontWeight:      hasEvent ? 700 : 400,
                 cursor:          hasEvent ? 'pointer' : 'default',
@@ -202,7 +202,7 @@ function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDat
           border: '1.5px solid var(--color-accent)',
         }} />
         <span style={{
-          fontFamily:  'Inter, sans-serif',
+          fontFamily:  'Plus Jakarta Sans, sans-serif',
           fontSize:    '11px',
           color:       'var(--color-text-tertiary)',
           letterSpacing: '0.01em',
@@ -216,7 +216,7 @@ function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDat
               marginLeft:      'auto',
               background:      'none',
               border:          'none',
-              fontFamily:      'Inter, sans-serif',
+              fontFamily:      'Plus Jakarta Sans, sans-serif',
               fontSize:        '11px',
               fontWeight:      600,
               color:           'var(--color-accent)',
@@ -298,7 +298,7 @@ function EventCard({ event, isPast = false }) {
           <CategoryPill category={event.category} />
           {isPast && (
             <span style={{
-              fontFamily:      'Inter, sans-serif',
+              fontFamily:      'Plus Jakarta Sans, sans-serif',
               fontSize:        '10px',
               fontWeight:      600,
               letterSpacing:   '0.07em',
@@ -314,7 +314,7 @@ function EventCard({ event, isPast = false }) {
           )}
         </div>
         <span style={{
-          fontFamily:  'Inter, sans-serif',
+          fontFamily:  'Plus Jakarta Sans, sans-serif',
           fontSize:    '11px',
           fontWeight:  500,
           color:       'var(--color-text-tertiary)',
@@ -340,7 +340,7 @@ function EventCard({ event, isPast = false }) {
 
       {/* Description */}
       <p style={{
-        fontFamily:      'Inter, sans-serif',
+        fontFamily:      'Plus Jakarta Sans, sans-serif',
         fontSize:        '13px',
         lineHeight:      1.72,
         color:           'var(--color-text-secondary)',
@@ -362,7 +362,7 @@ function EventCard({ event, isPast = false }) {
             <circle cx="6" cy="4.5" r="1" fill="var(--color-text-tertiary)"/>
           </svg>
           <span style={{
-            fontFamily:  'Inter, sans-serif',
+            fontFamily:  'Plus Jakarta Sans, sans-serif',
             fontSize:    '11px',
             color:       'var(--color-text-tertiary)',
             letterSpacing: '0.01em',
@@ -383,7 +383,8 @@ const TODAY = new Date().toISOString().slice(0, 10) // 'YYYY-MM-DD'
 
 export default function Events() {
   usePageTitle('Events')
-  const [tab,          setTab]          = useState('upcoming') // 'upcoming' | 'past'
+  const hasUpcoming = eventsData.some(e => e.date >= TODAY)
+  const [tab,          setTab]          = useState(hasUpcoming ? 'upcoming' : 'past')
   const init = getInitialMonth()
   const [viewYear,     setViewYear]     = useState(init.year)
   const [viewMonth,    setViewMonth]    = useState(init.month)
@@ -449,7 +450,7 @@ export default function Events() {
               key={t}
               onClick={() => { setTab(t); setSelectedDate(null) }}
               style={{
-                fontFamily:      'Inter, sans-serif',
+                fontFamily:      'Plus Jakarta Sans, sans-serif',
                 fontSize:        '13px',
                 fontWeight:      600,
                 letterSpacing:   '0.04em',
@@ -504,7 +505,7 @@ export default function Events() {
                 {listHeading}
               </h2>
               <span style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Plus Jakarta Sans, sans-serif',
                 fontSize:   '12px',
                 color:      'var(--color-text-tertiary)',
               }}>
@@ -534,7 +535,7 @@ export default function Events() {
                   }}
                 >
                   <p style={{
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Plus Jakarta Sans, sans-serif',
                     fontSize:   '14px',
                     color:      'var(--color-text-tertiary)',
                     margin:     0,

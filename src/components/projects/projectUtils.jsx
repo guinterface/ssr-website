@@ -28,7 +28,7 @@ export function CategoryTag({ category }) {
     <span style={{
       display:         'inline-flex',
       alignItems:      'center',
-      fontFamily:      'Inter, sans-serif',
+      fontFamily:      'Plus Jakarta Sans, sans-serif',
       fontSize:        '10px',
       fontWeight:      600,
       letterSpacing:   '0.09em',
@@ -58,7 +58,7 @@ export function StatusDot({ status }) {
         flexShrink:      0,
       }} />
       <span style={{
-        fontFamily: 'Inter, sans-serif',
+        fontFamily: 'Plus Jakarta Sans, sans-serif',
         fontSize:   '11px',
         fontWeight: 500,
         color:      'var(--color-text-tertiary)',

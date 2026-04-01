@@ -17,7 +17,7 @@ export default function JoinCta({
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '32px', maxWidth: '640px' }}>
 
             <span style={{
-              fontFamily:    'Inter, sans-serif',
+              fontFamily:    'Plus Jakarta Sans, sans-serif',
               fontSize:      '11px',
               fontWeight:    600,
               letterSpacing: '0.1em',
@@ -41,7 +41,7 @@ export default function JoinCta({
 
             {body && (
               <p style={{
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Plus Jakarta Sans, sans-serif',
                 fontSize:   '16px',
                 lineHeight: 1.7,
                 color:      'var(--color-text-secondary)',

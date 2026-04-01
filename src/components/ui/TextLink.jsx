@@ -29,7 +29,7 @@ export default function TextLink({
     display:       'inline-flex',
     alignItems:    'center',
     gap:           hovered ? '10px' : '6px',
-    fontFamily:    'Inter, sans-serif',
+    fontFamily:    'Plus Jakarta Sans, sans-serif',
     fontSize:      size === 'sm' ? '12px' : '13px',
     fontWeight:    600,
     letterSpacing: '0.05em',

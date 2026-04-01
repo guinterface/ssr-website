@@ -23,7 +23,7 @@ const BASE = {
   display:       'inline-flex',
   alignItems:    'center',
   gap:           '8px',
-  fontFamily:    'Inter, sans-serif',
+  fontFamily:    'Plus Jakarta Sans, sans-serif',
   fontSize:      '13px',
   fontWeight:    600,
   letterSpacing: '0.05em',
