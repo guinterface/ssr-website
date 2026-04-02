@@ -129,10 +129,24 @@ img {
   50%       { opacity: 0.3; transform: scale(0.75); }
 }
 
-/* ─── Image strip scroll ────────────────────────────────────── */
+/* ─── Image strip + sponsor marquee ─────────────────────────── */
 @keyframes imageScroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+
+/* ─── Hero grid cell fade-in (CSS, compositor thread) ────────── */
+@keyframes cell-fade-in {
+  from { opacity: 0;    }
+  to   { opacity: 0.26; }
+}
+@keyframes marquee-fwd {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes marquee-rev {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
 }
 
 /* ─── Hero grid column drift ────────────────────────────────── */

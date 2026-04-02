@@ -12,20 +12,6 @@ const institutional = sponsors.filter(s => s.group === 'institutional')
 const partners      = sponsors.filter(s => s.group === 'partner')
 
 // ─────────────────────────────────────────────────────────────────
-// CSS keyframes — very slow, barely perceptible motion
-// ─────────────────────────────────────────────────────────────────
-const KEYFRAMES = `
-  @keyframes marquee-fwd {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-  @keyframes marquee-rev {
-    from { transform: translateX(-50%); }
-    to   { transform: translateX(0); }
-  }
-`
-
-// ─────────────────────────────────────────────────────────────────
 // Helpers
 // ─────────────────────────────────────────────────────────────────
 function buildTrack(arr, minCount = 14) {
@@ -212,10 +198,10 @@ const BAND_ROWS = [
     key:        'partners',
     label:      'Strategic Partners',
     sponsors:   partners,
-    duration:   75,           // slightly faster than institutional, still slow
+    duration:   75,
     reverse:    true,
     logoHeight: 32,
-    yOffset:    8,            // offset down slightly — breaks perfect alignment
+    yOffset:    0,
   },
 ]
 
@@ -315,6 +301,77 @@ const VALUE_POINTS = [
   },
 ]
 
+function CtaPanel() {
+  const [hovered, setHovered] = useState(false)
+  return (
+    <div style={{
+      display:             'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap:                 'clamp(32px, 6vw, 80px)',
+      alignItems:          'center',
+      padding:             'clamp(28px, 4vw, 48px) clamp(28px, 4vw, 48px)',
+      border:              '1px solid var(--color-border)',
+      borderRadius:        '10px',
+      backgroundColor:     'var(--color-surface)',
+    }}>
+      <div>
+        <p style={{
+          fontFamily:    '"Space Grotesk", sans-serif',
+          fontSize:      'clamp(17px, 2vw, 22px)',
+          fontWeight:    600,
+          letterSpacing: '-0.02em',
+          color:         'var(--color-text-primary)',
+          margin:        '0 0 8px',
+        }}>
+          Interested in sponsoring?
+        </p>
+        <p style={{
+          fontFamily: 'Plus Jakarta Sans, sans-serif',
+          fontSize:   '14px',
+          lineHeight: 1.65,
+          color:      'var(--color-text-secondary)',
+          margin:     0,
+        }}>
+          Reach out and we'll send over our sponsorship deck.
+        </p>
+      </div>
+      <div style={{
+        borderLeft:  '1px solid var(--color-border)',
+        paddingLeft: 'clamp(24px, 4vw, 48px)',
+      }}>
+        <p style={{
+          fontFamily:    'Plus Jakarta Sans, sans-serif',
+          fontSize:      '10px',
+          fontWeight:    700,
+          letterSpacing: '0.12em',
+          textTransform: 'uppercase',
+          color:         'var(--color-text-tertiary)',
+          margin:        '0 0 8px',
+        }}>
+          Email us directly
+        </p>
+        <a
+          href="mailto:stanfordroboclub@gmail.com"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          style={{
+            fontFamily:     '"Space Grotesk", sans-serif',
+            fontSize:       'clamp(14px, 1.6vw, 18px)',
+            fontWeight:     500,
+            letterSpacing:  '-0.02em',
+            color:          hovered ? 'var(--color-accent)' : 'var(--color-text-primary)',
+            textDecoration: 'none',
+            transition:     'color 0.18s ease',
+            display:        'block',
+          }}
+        >
+          stanfordroboclub@gmail.com
+        </a>
+      </div>
+    </div>
+  )
+}
+
 function WhySponsor() {
   const ref    = useRef(null)
   const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px' })
@@ -363,38 +420,7 @@ function WhySponsor() {
         ))}
       </motion.div>
 
-      <div style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        flexWrap: 'wrap', gap: '20px', padding: '32px 40px',
-        borderRadius: '10px', backgroundColor: 'var(--color-accent)',
-      }}>
-        <div>
-          <p style={{ fontFamily: '"Space Grotesk", sans-serif', fontSize: 'clamp(17px, 2vw, 21px)', fontWeight: 600, letterSpacing: '-0.02em', color: '#fff', margin: '0 0 4px' }}>
-            Interested in sponsoring?
-          </p>
-          <p style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.65)', margin: 0 }}>
-            Reach out and we'll send over our sponsorship deck.
-          </p>
-        </div>
-        <a
-          href="mailto:stanfordroboclub@gmail.com"
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: '8px',
-            backgroundColor: '#fff', color: 'var(--color-accent)',
-            fontFamily: 'Plus Jakarta Sans, sans-serif', fontSize: '13px', fontWeight: 700,
-            letterSpacing: '0.04em', textTransform: 'uppercase',
-            padding: '13px 26px', borderRadius: '6px',
-            textDecoration: 'none', flexShrink: 0, transition: 'opacity 0.2s ease',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.opacity = '0.88' }}
-          onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
-        >
-          Get in touch
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-            <path d="M2 6.5h9M7.5 3l3.5 3.5-3.5 3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </a>
-      </div>
+      <CtaPanel />
     </div>
   )
 }
@@ -406,8 +432,6 @@ export default function Sponsors() {
   usePageTitle('Sponsors')
   return (
     <main style={{ paddingTop: 'var(--nav-height)' }}>
-      <style>{KEYFRAMES}</style>
-
       <section className="section container">
         <SectionHeader
           counter="03 · SPONSORS"

@@ -255,7 +255,7 @@ export default function Hero() {
       {/* ── Grid background ──────────────────────────────── */}
       <motion.div
         className="absolute inset-0"
-        style={reducedMotion ? {} : { opacity: gridOpacity, y: gridY }}
+        style={reducedMotion ? {} : { opacity: gridOpacity, y: gridY, willChange: 'opacity, transform' }}
       >
         <HeroVisualGrid />
       </motion.div>

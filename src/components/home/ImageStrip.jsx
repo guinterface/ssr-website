@@ -33,8 +33,8 @@ export default function ImageStrip({ projects = [], speed = 65 }) {
 
   return (
     <div
-      style={{ backgroundColor: 'var(--color-surface-muted)' }}
-      className="overflow-hidden border-t border-b border-border"
+      style={{ backgroundColor: 'var(--color-bg)' }}
+      className="overflow-hidden"
     >
       {/* Top micro-label */}
       <div className="container py-5 pb-0">

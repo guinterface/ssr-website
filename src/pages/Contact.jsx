@@ -86,9 +86,9 @@ function ContactHeader() {
             fontFamily:    'Plus Jakarta Sans, sans-serif',
             fontSize:      '11px',
             fontWeight:    600,
-            letterSpacing: '0.12em',
+            letterSpacing: '0.1em',
             textTransform: 'uppercase',
-            color:         'var(--color-text-tertiary)',
+            color:         'var(--color-accent)',
             margin:        '0 0 16px',
           }}
         >

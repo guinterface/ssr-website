@@ -14,12 +14,14 @@ export default function Home() {
       <Hero />
       <ImageStrip projects={projects} />
       <AboutSection />
-      <div className="container">
-        <JoinCta
-          headline="Ready to build something real?"
-          body="We take on students from all disciplines, engineering, design, and everything in between. We are waiting for you."
-        />
-      </div>
+      <section className="section" style={{ backgroundColor: 'var(--color-bg)' }}>
+        <div className="container">
+          <JoinCta
+            headline="Ready to build something real?"
+            body="We take on students from all disciplines, engineering, design, and everything in between. We are waiting for you."
+          />
+        </div>
+      </section>
       <SponsorsPreview sponsors={sponsors} />
     </main>
   )

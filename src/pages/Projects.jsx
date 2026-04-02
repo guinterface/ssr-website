@@ -32,6 +32,13 @@ export default function Projects() {
     ...shuffle(projects.filter(p => !p.featured)),
   ], []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Count per category for pill labels
+  const categoryCounts = useMemo(() =>
+    Object.fromEntries(
+      ALL_CATEGORIES.filter(c => c !== 'All').map(c => [c, projects.filter(p => p.category === c).length])
+    )
+  , [])
+
   const filtered = activeCategory === 'All'
     ? shuffledProjects
     : shuffledProjects.filter(p => p.category === activeCategory)
@@ -96,7 +103,7 @@ export default function Projects() {
                     }
                   }}
                 >
-                  {cat}
+                  {cat === 'All' ? `All · ${projects.length}` : `${cat} · ${categoryCounts[cat]}`}
                 </button>
               )
             })}

@@ -103,7 +103,7 @@ export default function ProjectModal({ project, onClose }) {
             </div>
 
             {/* Body */}
-            <div style={{ padding: '40px 44px 52px' }}>
+            <div style={{ padding: '40px 44px' }}>
 
               {/* Meta row */}
               <div style={{

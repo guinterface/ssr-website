@@ -1,8 +1,8 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { usePageTitle }  from '../hooks/usePageTitle'
-import SectionHeader from '../components/ui/SectionHeader'
-import eventsData    from '../data/events.json'
+import { usePageTitle } from '../hooks/usePageTitle'
+import SectionHeader   from '../components/ui/SectionHeader'
+import eventsData      from '../data/events.json'
 
 // ─────────────────────────────────────────────────────────────────
 // Helpers
@@ -47,10 +47,15 @@ function formatDate(dateStr) {
   })
 }
 
-// Default view: earliest event's month
-function getInitialMonth() {
-  const earliest = eventsData.reduce((min, e) => e.date < min ? e.date : min, eventsData[0].date)
-  const [y, m] = earliest.split('-').map(Number)
+// Start calendar on the month that has the most relevant events
+function getInitialMonth(tabEvents) {
+  if (tabEvents.length === 0) {
+    const now = new Date()
+    return { year: now.getFullYear(), month: now.getMonth() }
+  }
+  // For upcoming: earliest event. For past: most recent event.
+  const anchor = tabEvents[0].date
+  const [y, m] = anchor.split('-').map(Number)
   return { year: y, month: m - 1 }
 }
 
@@ -59,6 +64,31 @@ function getInitialMonth() {
 // ─────────────────────────────────────────────────────────────────
 
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
+function NavButton({ onClick, children }) {
+  const [hovered, setHovered] = useState(false)
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background:      'none',
+        border:          'none',
+        color:           hovered ? '#fff' : 'rgba(255,255,255,0.65)',
+        cursor:          'pointer',
+        fontSize:        '20px',
+        lineHeight:      1,
+        padding:         '4px 8px',
+        borderRadius:    '4px',
+        backgroundColor: hovered ? 'rgba(255,255,255,0.15)' : 'transparent',
+        transition:      'color 0.15s ease, background-color 0.15s ease',
+      }}
+    >
+      {children}
+    </button>
+  )
+}
 
 function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDate, onSelectDate }) {
   const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate()
@@ -69,7 +99,6 @@ function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDat
   const cells = []
   for (let i = 0; i < firstDay; i++) cells.push(null)
   for (let d = 1; d <= daysInMonth; d++) cells.push(d)
-  // pad to complete last row
   while (cells.length % 7 !== 0) cells.push(null)
 
   return (
@@ -80,7 +109,7 @@ function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDat
       backgroundColor: 'var(--color-surface)',
       boxShadow:       '0 2px 12px rgba(0,0,0,0.06)',
     }}>
-      {/* Header bar — cardinal red */}
+      {/* Header */}
       <div style={{
         backgroundColor: 'var(--color-accent)',
         padding:         '18px 20px',
@@ -103,10 +132,10 @@ function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDat
 
       {/* Weekday labels */}
       <div style={{
-        display:               'grid',
-        gridTemplateColumns:   'repeat(7, 1fr)',
-        padding:               '14px 12px 6px',
-        borderBottom:          '1px solid var(--color-border)',
+        display:             'grid',
+        gridTemplateColumns: 'repeat(7, 1fr)',
+        padding:             '14px 12px 6px',
+        borderBottom:        '1px solid var(--color-border)',
       }}>
         {WEEKDAYS.map(d => (
           <div key={d} style={{
@@ -133,8 +162,8 @@ function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDat
       }}>
         {cells.map((day, i) => {
           if (!day) return <div key={i} />
-          const dateStr   = `${viewYear}-${String(viewMonth + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`
-          const hasEvent  = eventDates.has(dateStr)
+          const dateStr    = `${viewYear}-${String(viewMonth + 1).padStart(2,'0')}-${String(day).padStart(2,'0')}`
+          const hasEvent   = eventDates.has(dateStr)
           const isSelected = selectedDate === dateStr
 
           return (
@@ -169,7 +198,6 @@ function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDat
               }}
             >
               {day}
-              {/* Event dot */}
               {hasEvent && !isSelected && (
                 <span style={{
                   position:        'absolute',
@@ -202,9 +230,9 @@ function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDat
           border: '1.5px solid var(--color-accent)',
         }} />
         <span style={{
-          fontFamily:  'Plus Jakarta Sans, sans-serif',
-          fontSize:    '11px',
-          color:       'var(--color-text-tertiary)',
+          fontFamily:    'Plus Jakarta Sans, sans-serif',
+          fontSize:      '11px',
+          color:         'var(--color-text-tertiary)',
           letterSpacing: '0.01em',
         }}>
           Event scheduled
@@ -213,16 +241,16 @@ function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDat
           <button
             onClick={() => onSelectDate(null)}
             style={{
-              marginLeft:      'auto',
-              background:      'none',
-              border:          'none',
-              fontFamily:      'Plus Jakarta Sans, sans-serif',
-              fontSize:        '11px',
-              fontWeight:      600,
-              color:           'var(--color-accent)',
-              cursor:          'pointer',
-              letterSpacing:   '0.02em',
-              padding:         0,
+              marginLeft:    'auto',
+              background:    'none',
+              border:        'none',
+              fontFamily:    'Plus Jakarta Sans, sans-serif',
+              fontSize:      '11px',
+              fontWeight:    600,
+              color:         'var(--color-accent)',
+              cursor:        'pointer',
+              letterSpacing: '0.02em',
+              padding:       0,
             }}
           >
             Clear filter ×
@@ -233,59 +261,35 @@ function Calendar({ viewYear, viewMonth, onPrev, onNext, eventDates, selectedDat
   )
 }
 
-function NavButton({ onClick, children }) {
-  const [hovered, setHovered] = useState(false)
-  return (
-    <button
-      onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        background:   'none',
-        border:       'none',
-        color:        hovered ? '#fff' : 'rgba(255,255,255,0.65)',
-        cursor:       'pointer',
-        fontSize:     '20px',
-        lineHeight:   1,
-        padding:      '4px 8px',
-        borderRadius: '4px',
-        backgroundColor: hovered ? 'rgba(255,255,255,0.15)' : 'transparent',
-        transition:   'color 0.15s ease, background-color 0.15s ease',
-      }}
-    >
-      {children}
-    </button>
-  )
-}
-
 // ─────────────────────────────────────────────────────────────────
-// Event card — clean white card, structured
+// Event card
 // ─────────────────────────────────────────────────────────────────
 
 function EventCard({ event, isPast = false }) {
   const [hovered, setHovered] = useState(false)
+  const featured = event.featured
 
   return (
     <motion.article
       layout
       initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: isPast ? 0.55 : 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
         backgroundColor: 'var(--color-surface)',
-        border:          `1px solid ${hovered ? '#C8C6C4' : 'var(--color-border)'}`,
+        border:          `1px solid ${hovered ? 'var(--color-text-tertiary)' : 'var(--color-border)'}`,
+        borderLeft:      featured ? '3px solid var(--color-accent)' : undefined,
         borderRadius:    '10px',
-        padding:         '20px 22px',
+        padding:         featured ? '24px 28px' : '18px 22px',
         boxShadow:       hovered ? '0 4px 20px rgba(0,0,0,0.08)' : '0 1px 4px rgba(0,0,0,0.04)',
-        transition:      'border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease',
+        transition:      'border-color 0.2s ease, box-shadow 0.2s ease',
         cursor:          'default',
-        opacity:         isPast && hovered ? 0.85 : undefined,
       }}
     >
-      {/* Top row: category + date + past badge */}
+      {/* Top row */}
       <div style={{
         display:        'flex',
         alignItems:     'center',
@@ -314,12 +318,12 @@ function EventCard({ event, isPast = false }) {
           )}
         </div>
         <span style={{
-          fontFamily:  'Plus Jakarta Sans, sans-serif',
-          fontSize:    '11px',
-          fontWeight:  500,
-          color:       'var(--color-text-tertiary)',
+          fontFamily:    'Plus Jakarta Sans, sans-serif',
+          fontSize:      '11px',
+          fontWeight:    500,
+          color:         'var(--color-text-tertiary)',
           letterSpacing: '0.01em',
-          flexShrink:  0,
+          flexShrink:    0,
         }}>
           {formatDate(event.date)}
         </span>
@@ -328,10 +332,10 @@ function EventCard({ event, isPast = false }) {
       {/* Title */}
       <h3 style={{
         fontFamily:    '"Space Grotesk", sans-serif',
-        fontSize:      '16px',
+        fontSize:      featured ? '20px' : '16px',
         fontWeight:    600,
         lineHeight:    1.2,
-        letterSpacing: '-0.018em',
+        letterSpacing: '-0.02em',
         color:         'var(--color-text-primary)',
         margin:        '0 0 8px',
       }}>
@@ -345,10 +349,10 @@ function EventCard({ event, isPast = false }) {
         lineHeight:      1.72,
         color:           'var(--color-text-secondary)',
         margin:          '0 0 12px',
-        display:         '-webkit-box',
-        WebkitLineClamp: 2,
-        WebkitBoxOrient: 'vertical',
-        overflow:        'hidden',
+        display:         featured ? 'block' : '-webkit-box',
+        WebkitLineClamp: featured ? undefined : 2,
+        WebkitBoxOrient: featured ? undefined : 'vertical',
+        overflow:        featured ? 'visible' : 'hidden',
       }}>
         {event.description}
       </p>
@@ -362,9 +366,9 @@ function EventCard({ event, isPast = false }) {
             <circle cx="6" cy="4.5" r="1" fill="var(--color-text-tertiary)"/>
           </svg>
           <span style={{
-            fontFamily:  'Plus Jakarta Sans, sans-serif',
-            fontSize:    '11px',
-            color:       'var(--color-text-tertiary)',
+            fontFamily:    'Plus Jakarta Sans, sans-serif',
+            fontSize:      '11px',
+            color:         'var(--color-text-tertiary)',
             letterSpacing: '0.01em',
           }}>
             {event.location}
@@ -379,26 +383,25 @@ function EventCard({ event, isPast = false }) {
 // Page
 // ─────────────────────────────────────────────────────────────────
 
-const TODAY = new Date().toISOString().slice(0, 10) // 'YYYY-MM-DD'
+const TODAY = new Date().toISOString().slice(0, 10)
 
 export default function Events() {
   usePageTitle('Events')
   const hasUpcoming = eventsData.some(e => e.date >= TODAY)
-  const [tab,          setTab]          = useState(hasUpcoming ? 'upcoming' : 'past')
-  const init = getInitialMonth()
+  const [tab, setTab] = useState(hasUpcoming ? 'upcoming' : 'past')
+
+  const tabEvents = useMemo(
+    () => tab === 'upcoming'
+      ? eventsData.filter(e => e.date >= TODAY).sort((a, b) => a.date.localeCompare(b.date))
+      : eventsData.filter(e => e.date < TODAY).sort((a, b) => b.date.localeCompare(a.date)),
+    [tab]
+  )
+
+  const init = useMemo(() => getInitialMonth(tabEvents), [tabEvents])
   const [viewYear,     setViewYear]     = useState(init.year)
   const [viewMonth,    setViewMonth]    = useState(init.month)
   const [selectedDate, setSelectedDate] = useState(null)
 
-  // Filter events by tab
-  const tabEvents = useMemo(
-    () => tab === 'upcoming'
-      ? eventsData.filter(e => e.date >= TODAY)
-      : eventsData.filter(e => e.date < TODAY).reverse(),
-    [tab]
-  )
-
-  // Set of date strings with events (filtered by tab)
   const eventDates = useMemo(
     () => new Set(tabEvents.map(e => e.date)),
     [tabEvents]
@@ -416,11 +419,22 @@ export default function Events() {
     setSelectedDate(null)
   }
 
-  // Visible events: if date selected → that date only; else → current view month
+  function switchTab(t) {
+    const next = eventsData
+      .filter(e => t === 'upcoming' ? e.date >= TODAY : e.date < TODAY)
+      .sort((a, b) => t === 'upcoming'
+        ? a.date.localeCompare(b.date)
+        : b.date.localeCompare(a.date)
+      )
+    const anchor = getInitialMonth(next)
+    setTab(t)
+    setViewYear(anchor.year)
+    setViewMonth(anchor.month)
+    setSelectedDate(null)
+  }
+
   const visibleEvents = useMemo(() => {
-    if (selectedDate) {
-      return tabEvents.filter(e => e.date === selectedDate)
-    }
+    if (selectedDate) return tabEvents.filter(e => e.date === selectedDate)
     return tabEvents
       .filter(e => {
         const [ey, em] = e.date.split('-').map(Number)
@@ -443,12 +457,17 @@ export default function Events() {
           subtitle="Workshops, showcases, competitions, and socials. There's always something going on."
         />
 
-        {/* Upcoming / Past tabs */}
-        <div style={{ display: 'flex', gap: '4px', marginBottom: '32px', borderBottom: '1px solid var(--color-border)', paddingBottom: '0' }}>
+        {/* Tabs */}
+        <div style={{
+          display:      'flex',
+          gap:          '4px',
+          marginBottom: '32px',
+          borderBottom: '1px solid var(--color-border)',
+        }}>
           {['upcoming', 'past'].map(t => (
             <button
               key={t}
-              onClick={() => { setTab(t); setSelectedDate(null) }}
+              onClick={() => switchTab(t)}
               style={{
                 fontFamily:      'Plus Jakarta Sans, sans-serif',
                 fontSize:        '13px',
@@ -472,6 +491,7 @@ export default function Events() {
 
         {/* Two-column layout */}
         <div className="events-layout">
+
           {/* LEFT — Calendar (sticky) */}
           <div className="calendar-sticky">
             <Calendar
@@ -487,7 +507,6 @@ export default function Events() {
 
           {/* RIGHT — Event list */}
           <div>
-            {/* List heading */}
             <div style={{
               display:       'flex',
               alignItems:    'baseline',
@@ -513,7 +532,6 @@ export default function Events() {
               </span>
             </div>
 
-            {/* Cards */}
             <AnimatePresence mode="popLayout">
               {visibleEvents.length > 0 ? (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -528,9 +546,9 @@ export default function Events() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   style={{
-                    padding:    '60px 24px',
-                    textAlign:  'center',
-                    border:     '1px dashed var(--color-border)',
+                    padding:      '60px 24px',
+                    textAlign:    'center',
+                    border:       '1px dashed var(--color-border)',
                     borderRadius: '10px',
                   }}
                 >
@@ -538,16 +556,32 @@ export default function Events() {
                     fontFamily: 'Plus Jakarta Sans, sans-serif',
                     fontSize:   '14px',
                     color:      'var(--color-text-tertiary)',
-                    margin:     0,
+                    margin:     '0 0 10px',
                   }}>
-                    No events this day.
+                    No events this month.
                   </p>
+                  <button
+                    onClick={() => switchTab(tab === 'upcoming' ? 'past' : 'upcoming')}
+                    style={{
+                      fontFamily:    'Plus Jakarta Sans, sans-serif',
+                      fontSize:      '13px',
+                      fontWeight:    600,
+                      color:         'var(--color-accent)',
+                      background:    'none',
+                      border:        'none',
+                      cursor:        'pointer',
+                      padding:       0,
+                      letterSpacing: '0.02em',
+                    }}
+                  >
+                    View {tab === 'upcoming' ? 'past' : 'upcoming'} events →
+                  </button>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
-        </div>
 
+        </div>
       </section>
     </main>
   )

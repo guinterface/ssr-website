@@ -1,12 +1,14 @@
-import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { useState, useEffect, useRef, memo } from 'react'
+import { useReducedMotion } from 'framer-motion'
 
 /**
  * Multi-screen visual grid — hero background.
  *
- * Column drift runs as pure CSS @keyframes (compositor thread / GPU).
- * Framer Motion is only used for image crossfades (event-driven, infrequent).
- * This keeps the JS main thread free during scroll.
+ * Performance architecture:
+ *   - Column drift: pure CSS @keyframes (compositor/GPU thread, never blocks scroll)
+ *   - Image crossfade: CSS @keyframes cell-fade-in + React key trick (no Framer Motion in hot path)
+ *   - GridCell wrapped in React.memo — only the one cell whose URL changed re-renders per interval
+ *   - Interval slowed to 4 s to halve main-thread update frequency
  */
 
 // ── Hero-specific image set ──────────────────────────────────────
@@ -38,8 +40,6 @@ const COLS = 8
 const ROWS = 5
 
 // ── Column motion ────────────────────────────────────────────────
-// yOffset: travel distance in px (sign sets direction).
-// duration/delay: desynchronise columns so they never peak together.
 const COLUMN_MOTION = [
   { yOffset: -48, duration:  8, delay: 0.0 },
   { yOffset:  36, duration: 10, delay: 1.2 },
@@ -60,6 +60,9 @@ const IMAGE_CELLS = new Set([
   32, 34, 37,
 ])
 
+// Stable array — module-level so it never triggers re-renders
+const IMAGE_CELL_ARRAY = Array.from(IMAGE_CELLS)
+
 export default function HeroVisualGrid() {
   const reducedMotion = useReducedMotion()
 
@@ -70,17 +73,17 @@ export default function HeroVisualGrid() {
     return map
   })
 
-  const pointer        = useRef(0)
-  const imageCellArray = Array.from(IMAGE_CELLS)
+  const pointer = useRef(0)
 
   useEffect(() => {
+    if (reducedMotion) return
     const id = setInterval(() => {
-      const cellIdx = imageCellArray[pointer.current % imageCellArray.length]
+      const cellIdx = IMAGE_CELL_ARRAY[pointer.current % IMAGE_CELL_ARRAY.length]
       setCellMap(prev => ({ ...prev, [cellIdx]: (prev[cellIdx] + 1) % HERO_IMAGES.length }))
       pointer.current++
-    }, 2500)
+    }, 4000) // 4 s — halves update frequency vs original 2.5 s
     return () => clearInterval(id)
-  }, [])
+  }, [reducedMotion])
 
   return (
     <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -110,10 +113,9 @@ export default function HeroVisualGrid() {
                 flexDirection: 'column',
                 gap:           '10px',
                 willChange:    'transform',
-                // CSS animation — runs on compositor thread, never blocks scroll
                 ...(reducedMotion ? {} : {
-                  animation:     `hero-col-drift ${cm.duration}s cubic-bezier(0.45, 0, 0.55, 1) ${cm.delay}s infinite`,
-                  '--col-y':     `${cm.yOffset}px`,
+                  animation: `hero-col-drift ${cm.duration}s cubic-bezier(0.45, 0, 0.55, 1) ${cm.delay}s infinite`,
+                  '--col-y': `${cm.yOffset}px`,
                 }),
               }}
             >
@@ -136,8 +138,14 @@ export default function HeroVisualGrid() {
   )
 }
 
-// ── Individual tile ──────────────────────────────────────────────
-function GridCell({ imgUrl }) {
+// ── Individual tile ───────────────────────────────────────────────
+// React.memo: only re-renders when this cell's imgUrl changes.
+// One interval tick updates ONE cell — so 39 of 40 cells skip the render entirely.
+//
+// CSS key trick: changing `key` forces React to unmount the old <img> and
+// mount a fresh one. The new element starts at opacity:0 and the
+// cell-fade-in keyframe animates it to 0.26. No Framer Motion needed.
+const GridCell = memo(function GridCell({ imgUrl }) {
   return (
     <div
       style={{
@@ -148,29 +156,24 @@ function GridCell({ imgUrl }) {
         border:       imgUrl ? '1px solid var(--color-border)' : 'none',
       }}
     >
-      {/* No mode="wait" — crossfade is simultaneous (old fades out as new fades in) */}
-      <AnimatePresence>
-        {imgUrl && (
-          <motion.img
-            key={imgUrl}
-            src={imgUrl}
-            alt=""
-            loading="lazy"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.26 }}
-            exit={{    opacity: 0   }}
-            transition={{ duration: 1.8, ease: 'easeInOut' }}
-            style={{
-              position:  'absolute',
-              inset:     0,
-              width:     '100%',
-              height:    '100%',
-              objectFit: 'cover',
-              filter:    'grayscale(0.5) contrast(0.92)',
-            }}
-          />
-        )}
-      </AnimatePresence>
+      {imgUrl && (
+        <img
+          key={imgUrl}
+          src={imgUrl}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          style={{
+            position:  'absolute',
+            inset:     0,
+            width:     '100%',
+            height:    '100%',
+            objectFit: 'cover',
+            filter:    'grayscale(0.5) contrast(0.92)',
+            animation: 'cell-fade-in 1.8s ease-in-out forwards',
+          }}
+        />
+      )}
     </div>
   )
-}
+})
